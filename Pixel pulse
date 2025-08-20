@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Pulse - Video Platform</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f0f0f;
+      color: white;
+    }
+    header {
+      background: #181818;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+    }
+    header h1 {
+      color: #ff4444;
+      font-size: 22px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+    nav a:hover {
+      color: #ff4444;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+    .video-card {
+      background: #202020;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+    .video-card video {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .video-card .info {
+      padding: 10px;
+    }
+    .video-card button {
+      background: #ff4444;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+    .video-card button:hover {
+      background: #cc0000;
+    }
+    .login-page, .upload-page {
+      display: none;
+      padding: 40px;
+      text-align: center;
+    }
+    input, button {
+      margin: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Pixel Pulse</h1>
+  <nav>
+    <a href="#" onclick="showPage('home')">Home</a>
+    <a href="#" onclick="showPage('shorts')">Shorts</a>
+    <a href="#" onclick="showPage('upload')">Upload</a>
+    <a href="#" onclick="showPage('login')">Login</a>
+  </nav>
+</header>
+
+<!-- Home Page -->
+<div id="home" class="video-grid">
+  <div class="video-card">
+    <video src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" controls></video>
+    <div class="info">
+      <h3>Big Bunny Movie</h3>
+      <button onclick="downloadVideo()">Download</button>
+    </div>
+  </div>
+  <div class="video-card">
+    <video src="https://sample-videos.com/video123/mp4/720/sample-mp4-file.mp4" controls></video>
+    <div class="info">
+      <h3>Sample MP4</h3>
+      <button onclick="downloadVideo()">Download</button>
+    </div>
+  </div>
+</div>
+
+<!-- Shorts Page -->
+<div id="shorts" class="video-grid hidden">
+  <div class="video-card">
+    <video src="https://sample-videos.com/video123/mp4/720/sample-5s.mp4" controls loop></video>
+    <div class="info">
+      <h3>Short Clip</h3>
+      <button onclick="downloadVideo()">Download</button>
+    </div>
+  </div>
+</div>
+
+<!-- Upload Page -->
+<div id="upload" class="upload-page hidden">
+  <h2>Upload Your Video</h2>
+  <input type="file" accept="video/*"><br>
+  <button>Upload</button>
+</div>
+
+<!-- Login Page -->
+<div id="login" class="login-page hidden">
+  <h2>Login</h2>
+  <input type="text" placeholder="Username"><br>
+  <input type="password" placeholder="Password"><br>
+  <button>Login</button>
+</div>
+
+<script>
+  function showPage(page) {
+    document.querySelectorAll('div').forEach(div => div.classList.add('hidden'));
+    document.getElementById(page).classList.remove('hidden');
+  }
+  function downloadVideo() {
+    alert("Download started (Demo only).");
+  }
+</script>
+
+</body>
+</html>
